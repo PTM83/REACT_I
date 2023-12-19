@@ -7,3 +7,7 @@
 input {
     font-size:1.2rem;
 }
+
+.FormularioCss Button {
+    margin-bottom:0.5rem;
+}
