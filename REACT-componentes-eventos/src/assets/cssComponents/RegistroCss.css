@@ -1,15 +1,20 @@
 .RegistroCss {
     width:20rem;
+    height:100%;
     font-family:"Lucida Console", "Courier New", monospace;
+    border: 1px solid gray;
+    border-radius: 18px;
+    padding: 1.2rem;
+    background-color:white;
 }
 
 .RegistroCss h1 {
-    font-size:2.2rem;
+    font-size:1.8rem;
     font-weight:700;
 }
 
 .RegistroCss h2 {
-    font-size:1.05rem;
+    font-size:0.8rem;
     text-align:center;
     padding:0.8rem 0;
 }

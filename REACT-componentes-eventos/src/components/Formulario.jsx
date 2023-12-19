@@ -45,10 +45,10 @@ const Formulario = ({error, setError, setSuccess}) => {
                 onChange={(a) => setEmail(a.target.value)} autoFocus />
 
                 <input type='password' placeholder="Contraseña" value={password}
-                onChange={(a) => setPassword(a.target.value)} autoFocus />
+                onChange={(a) => setPassword(a.target.value)} />
 
                 <input type='password' placeholder="Confirma tu contraseña" value={check}
-                onChange={(a) => setCheck(a.target.value)} autoFocus />
+                onChange={(a) => setCheck(a.target.value)} />
 
                 <Button variant='success' type='submit'> Registrar </Button>
             </form>
