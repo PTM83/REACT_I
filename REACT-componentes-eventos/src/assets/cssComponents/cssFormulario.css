@@ -1,0 +1,9 @@
+.FormularioCss {
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+}
+
+input {
+    font-size:1.2rem;
+}
