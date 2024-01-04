@@ -7,7 +7,8 @@ const MiApi = () => {
     const [pharmas, setPharma] = useState([]);
     const [search, setSearch] = useState("");
     const [selectedRegion, setSelectedRegion] = useState(''); //agregado
-    //const [selectedComuna, setSelectedComuna] = useState('');
+    const [selectedComuna, setSelectedComuna] = useState('');
+    const [allComunas, setAllComunas] = useState([]);
     const [idRegion, setIdRegion] = useState(null);
     const [results, setResults] = useState([]);
 
@@ -48,21 +49,31 @@ const MiApi = () => {
         setIdRegion(id);
     }
 
-   /* const handleComunaChange = (e) => {
+   const handleComunaChange = (e) => {
         const nombreComuna = e.target.value;
         setSelectedComuna(nombreComuna);
-    }*/
+    }
+
+    //Para las Comunas
+    useEffect(() => {
+        const pharmasInRegion = pharmas.filter(pharma => pharma.fk_region === idRegion);
+
+        // Al cargar los datos, tambien se establecen todas las comunas posibles
+        const comunaNames = [...new Set(pharmasInRegion.map(pharma => pharma.comuna_nombre))];
+        const sortComunas = comunaNames.sort((a,b) => a.localeCompare(b))
+        setAllComunas(sortComunas);
+    },[pharmas, idRegion]);
 
     useEffect(() => {
-        let filteredPharmas = pharmas;
+        let filteredPharmas = [...pharmas];
 
         if(idRegion) {
             filteredPharmas = filteredPharmas.filter(pharma => pharma.fk_region === idRegion);
         }
 
-     /*   if(selectedComuna) {
+        if(selectedComuna) {
             filteredPharmas = filteredPharmas.filter(pharma => pharma.comuna_nombre === selectedComuna);
-        }*/
+        }
 
         if(search) {
             filteredPharmas = filteredPharmas.filter(pharma =>
@@ -70,7 +81,7 @@ const MiApi = () => {
             );
         }
         setResults(filteredPharmas);
-    },[pharmas, idRegion, search]);
+    },[pharmas, idRegion, selectedComuna, search]);
 
     //Ordenar Comunas de forma alfabética
 
@@ -100,7 +111,8 @@ const MiApi = () => {
             <div className="LabelSelect">
             <label>Región</label>
 
-            <select onChange={handleRegionChange}>
+            <select onChange={handleRegionChange} value={selectedRegion}>
+            <option value="">Todas Las Regiones</option>
                 {RegionChile.map((chile, index) =>
                     <option key={index} value={chile.region}> {chile.region}</option>
                     )}
@@ -110,9 +122,10 @@ const MiApi = () => {
             <div className="LabelSelect">
             <label>Comuna</label>
 
-            <select>
-            {COMUNAS.map((comuna, index) =>
-                <option key={index} >{comuna}</option>
+            <select onChange={handleComunaChange} value={selectedComuna}>
+            <option value="">Todas Las Comunas</option>
+            {allComunas.map((comuna, index) =>
+                <option key={index} value={comuna}>{comuna}</option>
              )}
 
             </select>

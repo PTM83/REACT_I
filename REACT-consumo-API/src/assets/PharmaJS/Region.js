@@ -1,9 +1,5 @@
 export const RegionChile = [
 {
-    id:'0',
-    region:"Selecciona Una Region"
-},
-{
     id:'1',
     region:"Arica y Parinacota"
 },
