@@ -1,10 +1,22 @@
 import { useState, useEffect } from 'react';
-import { RegionChile } from './assets/PharmaJS/RegionChile';
+import { RegionChile } from '../assets/PharmaJS/Region';
+import '../assets/PharmaCSS/pharma.css'
 
 const MiApi = () => {
 
     const [pharmas, setPharma] = useState([]);
     const [search, setSearch] = useState("");
+    const [selectedRegion, setSelectedRegion] = useState(''); //agregado
+    const [idRegion, setIdRegion] = useState(null);
+    const [results, setResults] = useState([]);
+
+
+    //Función que permite obtener el ID de acuerdo a la región seleccionada
+
+    function obtenerIdPorRegion(nombreRegion) {
+      const regionEncontrada = RegionChile.find(region => region.region === nombreRegion);
+      return regionEncontrada ? regionEncontrada.id : null;
+    }
 
 
     //Consumo APPi
@@ -26,9 +38,38 @@ const MiApi = () => {
         setSearch(e.target.value);
     };
 
-    //Filtrar Informacion
+    //Seleccionando una Region
+    const handleRegionChange = (e) => {
+        const nombreRegion = e.target.value;
+        setSelectedRegion(nombreRegion);
+        const id = obtenerIdPorRegion(nombreRegion);
+        //console.log(idRegion);
+        setIdRegion(id);
+    }
 
-    let results = []
+    useEffect(() => {
+        let filteredPharmas = pharmas;
+
+        if(idRegion) {
+            filteredPharmas = filteredPharmas.filter(pharma => pharma.fk_region === idRegion);
+        }
+
+        if(search) {
+            filteredPharmas = filteredPharmas.filter(pharma =>
+            pharma.local_nombre.toLowerCase().includes(search.toLowerCase())
+            );
+        }
+        setResults(filteredPharmas);
+    },[pharmas, idRegion, search]);
+
+    //Ordenar Comunas de forma alfabética
+
+    const COMUNAS = results.map(comuna => comuna.comuna_nombre);
+    const SortCOMUNAS = COMUNAS.sort((a,b) => a.localeCompare(b));
+
+
+    //Filtrar Informacion
+    /*let results = []
 
     if(!search) {
         results = pharmas;
@@ -36,7 +77,7 @@ const MiApi = () => {
         results = pharmas.filter((pharma) => {
             return pharma.local_nombre.toLowerCase().includes(search.toLowerCase())
         });
-    };
+    };*/
 
     return (
 
@@ -45,19 +86,29 @@ const MiApi = () => {
         <h2>FARMACIAS DE TURNOS</h2>
 
         <section className="RegionComuna">
+
+            <div className="LabelSelect">
             <label>Región</label>
-            <select>
+
+            <select onChange={handleRegionChange}>
                 {RegionChile.map((chile, index) =>
-                    <option key={index}> {chile.region}</option>
+                    <option key={index} value={chile.region}> {chile.region}</option>
                     )}
             </select>
+            </div>
+
+            <div className="LabelSelect">
             <label>Comuna</label>
+
             <select>
-                {results.map((comuna, index) =>
-                    <option key={index}> {comuna.comuna_nombre}</option>
-                    )}
+            {COMUNAS.map((comuna, index) =>
+                <option key={index}>{comuna}</option>
+             )}
+
             </select>
+            </div>
         </section>
+
         <input
             type="text"
             placeholder="search"
@@ -75,7 +126,7 @@ const MiApi = () => {
                 <th>Teléfono</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="table-group-divider">
                 {results.map((user, index) =>
                     <tr key={index}>
                         <td>{user.local_nombre}</td>
