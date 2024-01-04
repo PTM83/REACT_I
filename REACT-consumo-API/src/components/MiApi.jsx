@@ -7,6 +7,7 @@ const MiApi = () => {
     const [pharmas, setPharma] = useState([]);
     const [search, setSearch] = useState("");
     const [selectedRegion, setSelectedRegion] = useState(''); //agregado
+    //const [selectedComuna, setSelectedComuna] = useState('');
     const [idRegion, setIdRegion] = useState(null);
     const [results, setResults] = useState([]);
 
@@ -47,12 +48,21 @@ const MiApi = () => {
         setIdRegion(id);
     }
 
+   /* const handleComunaChange = (e) => {
+        const nombreComuna = e.target.value;
+        setSelectedComuna(nombreComuna);
+    }*/
+
     useEffect(() => {
         let filteredPharmas = pharmas;
 
         if(idRegion) {
             filteredPharmas = filteredPharmas.filter(pharma => pharma.fk_region === idRegion);
         }
+
+     /*   if(selectedComuna) {
+            filteredPharmas = filteredPharmas.filter(pharma => pharma.comuna_nombre === selectedComuna);
+        }*/
 
         if(search) {
             filteredPharmas = filteredPharmas.filter(pharma =>
@@ -102,7 +112,7 @@ const MiApi = () => {
 
             <select>
             {COMUNAS.map((comuna, index) =>
-                <option key={index}>{comuna}</option>
+                <option key={index} >{comuna}</option>
              )}
 
             </select>
