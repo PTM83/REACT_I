@@ -5,6 +5,24 @@
 - Primer component `SearchPharma.jsx` que se encarga de generar la búsqueda.
 - Segundo component `TablePharma.jsx` muestra la tabla con la información.
 
+## Las llaves de la Base de Datos
+
+    "fecha"
+    "local_id"
+    "fk_region"
+    "fk_comuna"
+    "fk_localidad"
+    "local_nombre"
+    "comuna_nombre"
+    "localidad_nombre"
+    "local_direccion"
+    "funcionamiento_hora_apertura"
+    "funcionamiento_hora_cierre"
+    "local_telefono"
+    "local_lat"
+    "local_lng"
+    "funcionamiento_dia"
+
 ## Dificultad del desafío
 
 Se presentan tres formas de realizar búsqueda de farmacias.
