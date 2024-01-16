@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import '../services/SearchPharma.css'
 
 export const SearchPharma = ({REGION, pharmaChile, search, setSearch}) => {
 
@@ -107,9 +108,10 @@ export const SearchPharma = ({REGION, pharmaChile, search, setSearch}) => {
         placeholder='Pharma Search'
         value={typeof search === 'string' ? search : ''}
         onChange= {handleSearch}
+        className='inputPharma'
         />}
 
-        <select onChange={handleRegion} value={selectRegion}>
+        <select onChange={handleRegion} value={selectRegion} className='selectPharma'>
             <option value=''>Todas las Regiones</option>
             {REGION && REGION.map( (region) => (
                 <option key={region.id}> {region.region} </option>
@@ -117,7 +119,7 @@ export const SearchPharma = ({REGION, pharmaChile, search, setSearch}) => {
             )}
         </select>
 
-        <select onChange={handleComuna} value={selectComuna}>
+        <select onChange={handleComuna} value={selectComuna} className='selectPharma'>
             <option value=''>Todas las Comunas</option>
             {comunaChile && comunaChile.map((comuna, index) =>
             <option key={index}>{comuna}</option>

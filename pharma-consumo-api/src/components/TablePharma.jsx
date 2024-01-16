@@ -1,7 +1,9 @@
+import '../services/TablaPharma.css'
+
 export const TablePharma = ({ dataPharma }) => {
     return (
 
-        <table>
+        <table className='principalTable'>
             <thead>
                 <tr>
                     <th>DrugStore Name</th>
@@ -13,7 +15,7 @@ export const TablePharma = ({ dataPharma }) => {
                 </tr>
             </thead>
             <tbody>
-                {dataPharma.map((user, index) =>
+                {dataPharma.slice(0,30).map((user, index) =>
                     <tr key={index}>
                             <td>{user.local_nombre}</td>
                             <td>{user.comuna_nombre}</td>

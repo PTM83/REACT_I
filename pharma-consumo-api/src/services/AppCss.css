@@ -1,0 +1,24 @@
+* {
+    padding:0;
+    margin:0 auto;
+    text-align: center;
+    max-width:1280px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.appH1 {
+    font-weight:600;
+    padding-top: 0.8rem;
+    text-transform: uppercase;
+    text-decoration: overline underline;
+    text-decoration-color:green;
+    letter-spacing:0.25rem;
+}
+
+introductionPharma, p {
+    text-align:justify;
+    padding:0.6rem 0;
+    width:100%;
+    word-spacing:0.25rem;
+    line-height:1.5;
+}

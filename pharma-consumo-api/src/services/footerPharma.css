@@ -1,0 +1,17 @@
+.navPharma{
+    background-color:#04AA6D;
+    width:100%;
+    border: 0.125rem solid black;
+    position:fixed;
+    bottom:0;
+    color:white;
+}
+
+.navPharma p {
+    text-align:center;
+}
+
+.navPharma a {
+    text-decoration: none;
+    font-weight:700;
+}
