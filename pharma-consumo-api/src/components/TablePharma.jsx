@@ -15,7 +15,7 @@ export const TablePharma = ({ dataPharma }) => {
                 </tr>
             </thead>
             <tbody>
-                {dataPharma.slice(0,30).map((user, index) =>
+                {dataPharma.slice(0,25).map((user, index) =>
                     <tr key={index}>
                             <td>{user.local_nombre}</td>
                             <td>{user.comuna_nombre}</td>
