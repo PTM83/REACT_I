@@ -33,4 +33,4 @@ Se presentan tres formas de realizar búsqueda de farmacias.
 
 ## Link de ver o descargar el vídeo
 
-*Link* https://www.dropbox.com/scl/fi/r7cs3i44a6o5lmnors1lb/video1468264538.mp4?rlkey=derre6o90sik6ncns50lnpb4k&dl=0
+*Link* https://www.dropbox.com/scl/fi/a1rlqddl0zj6uujfyej9q/video1329287301.mp4?rlkey=415gv785r981y957on33yyftb&dl=0

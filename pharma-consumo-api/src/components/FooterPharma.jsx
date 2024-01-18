@@ -7,7 +7,7 @@ export const FooterPharma = () => {
             <nav className='navPharma'>
                 <p>
                 Toda información entregada en esta página proviene del
-                <a href='https://datos.gob.cl/dataset/farmacias-en-chile'> Link </a>
+                <a href='https://datos.gob.cl/dataset/farmacias-en-chile' target='_blank'> Link </a>
                 . Que corresponde a información recopilada por el Gobierno de Chile.
                 </p>
             </nav>
